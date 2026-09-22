@@ -1,0 +1,74 @@
+<section id="dashboard" class="dashboard">
+    <div class="dashboard-box">
+        <div class="dashboard-logo"> W </div>
+        <div class="dashboard-tag"> GAME SETUP </div>
+        <h1 class="dashboard-title"> Welcome to WHOTS </h1>
+        <p class="dashboard-subtitle"> Set up your game before you take your first turn. </p>
+        <div class="dashboard-section">
+            <label for="playerName"> YOUR NAME </label>
+            <input type="text" id="playerName" class="name-input" placeholder="Enter your name" maxlength="20"
+                [(ngModel)]="playerName">
+        </div>
+        <div class="dashboard-section">
+            <label> CHOOSE YOUR SEAT</label>
+            <div class="option-group">
+                <button type="button" class="option-button" [class.selected]="selectedPlayer === 1"
+                    (click)="selectPlayer(1)">
+                    PLAYER 1 </button>
+                <button type="button" class="option-button" [class.selected]="selectedPlayer === 2"
+                    (click)="selectPlayer(2)">
+                    PLAYER 2 </button>
+            </div>
+        </div>
+        <div class="dashboard-section">
+            <label> WHO ARE YOU PLAYING AGAINST? </label>
+            <div class="option-group">
+                <button type="button" class="option-button" [class.selected]="selectedOpponent === 'computer'"
+                    (click)="selectOpponent('computer')">
+                    🖥️ YOU vs COMPUTER </button>
+                <button type="button" class="option-button" [class.selected]="selectedOpponent === 'person'"
+                    (click)="selectOpponent('person')">
+                    👤 YOU vs PERSON </button>
+            </div>
+        </div>
+        <div class="dashboard-section">
+            <div class="section-heading"><label>CHOOSE GAME MODE</label><span class="mode-note">Select one to see the
+                    rules</span></div>
+            <div class="style-group">
+                <button type="button" class="style-button classic" [class.selected]="selectedStyle === 'classic'"
+                    (click)="selectStyle('classic')">
+                    <span class="mode-index">01</span><strong>CLASSIC</strong><small>Endless table</small><em>No timer ·
+                        deck refills</em>
+                </button>
+                <button type="button" class="style-button quick" [class.selected]="selectedStyle === 'quick'"
+                    (click)="selectStyle('quick')">
+                    <span class="mode-index">02</span><strong>QUICK GAME</strong><small>Three-minute
+                        finish</small><em>Reveal on timeout · high total loses</em>
+                </button>
+                <button type="button" class="style-button challenge" [class.selected]="selectedStyle === 'challenge'"
+                    (click)="selectStyle('challenge')">
+                    <span class="mode-index">03</span><strong>CHALLENGE</strong><small>Build your rules</small><em>Cards
+                        · timer · difficulty · deck rules</em>
+                </button>
+            </div>
+        </div>
+
+        <div class="mode-preview" [ngSwitch]="selectedStyle">
+            <span *ngSwitchCase="'classic'">♧ <b>Classic rules</b> — play until one hand is empty. Your win streak is
+                tracked separately.</span>
+            <span *ngSwitchCase="'quick'">◷ <b>Quick rules</b> — 03:00 on the clock. If nobody wins, reveal both hands:
+                the higher total loses.</span>
+            <span *ngSwitchDefault>⚙ <b>Custom rules</b> — you will set the starting hand, opponent, difficulty, timer,
+                and deck-ending behavior next.</span>
+        </div>
+        <div class="difficulty-strip"><label>DIFFICULTY</label><button
+                [class.selected]="selectedDifficulty === 'casual'"
+                (click)="selectDifficulty('casual')">CASUAL</button><button
+                [class.selected]="selectedDifficulty === 'standard'"
+                (click)="selectDifficulty('standard')">STANDARD</button><button
+                [class.selected]="selectedDifficulty === 'expert'"
+                (click)="selectDifficulty('expert')">EXPERT</button><span>Separate win streaks per level</span></div>
+        <button type="button" class="start-game-btn" (click)="startGame()">CONTINUE <span>→</span></button>
+        <a class="back-link" routerLink="/">← Back to home</a>
+    </div>
+  </section>

@@ -1,0 +1,73 @@
+<section class="challenge-page">
+  <div class="challenge-shell">
+    <header class="challenge-header"><a routerLink="/dashboard" class="back">← Change mode</a>
+      <div class="step">CUSTOM CHALLENGE</div>
+      <div class="seal">W</div>
+      <h1>Build your table.</h1>
+      <p>Choose the rules that make this round yours. You can change them for every challenge.</p>
+    </header>
+    <div class="config-grid">
+      <div class="config-card wide">
+        <div class="card-label">OPPONENT</div>
+        <div class="segmented" *ngIf="opponent">
+          <span class="segmented-note">You have chosen {{ opponent === 'computer' ? 'Computer' : 'Local Player'
+            }}</span>
+        </div>
+      </div>
+      <div class="config-card">
+        <div class="card-label">STARTING HAND</div>
+        <div class="number-control"><button
+            (click)="startingCards = startingCards > 3 ? startingCards - 1 : startingCards">−</button><strong>{{
+            startingCards }}</strong><button
+            (click)="startingCards = startingCards < 12 ? startingCards + 1 : startingCards">+</button></div>
+        <p>Cards dealt to each player</p>
+      </div>
+      <div class="config-card">
+
+        <div class="card-label">DIFFICULTY</div>
+
+        <div class="difficulty-disabled" *ngIf="opponent !== 'computer'">
+          <span>Difficulty isn't used for a local player.</span>
+        </div>
+
+        <div *ngIf="opponent === 'computer'">
+
+          <label class="toggle-row"><span><b>Choose your opponent</b><small>Rewrites your earlier
+                decision.</small></span></label>
+          <div class="difficulty-list"><button [class.active]="difficulty==='casual'"
+              (click)="choose('difficulty','casual')"><i class="dot green"></i>CASUAL <span>Relaxed
+                opponent</span></button><button [class.active]="difficulty==='standard'"
+              (click)="choose('difficulty','standard')"><i class="dot gold"></i>STANDARD <span>Balanced
+                play</span></button><button [class.active]="difficulty==='expert'"
+              (click)="choose('difficulty','expert')"><i class="dot red"></i>EXPERT <span>Sharp
+                decisions</span></button>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="config-card wide rules-card">
+        <div class="card-label">TABLE RULES</div><label class="toggle-row"><span><b>End when deck empties</b><small>Stop
+              dealing when the draw pile is gone. Highest hand total loses.</small></span><input type="checkbox"
+            [(ngModel)]="endDeck"><em class="toggle"></em></label><label class="toggle-row"><span><b>Use a
+              timer</b><small>Reveal both hands when time runs out. Higher total loses.</small></span><input
+            type="checkbox" [(ngModel)]="timerEnabled"><em class="toggle"></em></label>
+        <div class="time-row" *ngIf="timerEnabled"><label for="minutes">TIME LIMIT</label><input id="minutes"
+            type="number" min="1" max="30" [(ngModel)]="timerMinutes"><span>minutes</span></div>
+      </div>
+    </div>
+    <div class="challenge-footer">
+      <div><b>{{ opponent === 'computer' ? 'You vs Computer' : 'Two player table' }}</b>
+        <span>
+          {{ startingCards }} cards
+          · {{ timerEnabled ? timerMinutes + ' min timer' : 'no timer' }}
+          <ng-container *ngIf="opponent === 'computer'">
+            · {{ difficulty | titlecase }}
+          </ng-container>
+        </span>
+      </div>
+      <button class="launch" (click)="startChallenge()">START CHALLENGE <span>→</span></button>
+    </div>
+  </div>
+</section>

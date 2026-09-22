@@ -1,0 +1,32 @@
+<section class="analysis-page"> 
+  <div class="analysis-shell"> 
+    <div class="analysis-tag">GAME ANALYSIS</div> 
+    <h1>How did you play?</h1> 
+    <p class="analysis-subtitle">A simple breakdown of the round you just finished.</p> 
+
+    <div class="result-banner"> 
+      <span>RESULT</span> 
+      <strong>{{ analysis.result }}</strong> 
+    </div>
+
+    <div class="analysis-meta"> 
+      <div><span>MODE</span><b>{{ analysis.mode }}</b></div> 
+      <div><span>DIFFICULTY</span><b>{{ analysis.difficulty }}</b></div> 
+      <div><span>DECK LEFT</span><b>{{ analysis.remainingDeck }}</b></div> 
+    </div>
+
+    <div class="analysis-grid"> 
+      <div class="analysis-card"><span>YOUR CARDS PLAYED</span><strong>{{ analysis.playerCardsPlayed }}</strong></div> 
+      <div class="analysis-card"><span>YOUR CARDS DRAWN</span><strong>{{ analysis.playerCardsDrawn }}</strong></div> 
+      <div class="analysis-card"><span>SPECIAL CARDS</span><strong>{{ analysis.specialCardsPlayed }}</strong></div> 
+      <div class="analysis-card"><span>OPPONENT PLAYED</span><strong>{{ analysis.opponentCardsPlayed }}</strong></div> 
+      <div class="analysis-card"><span>OPPONENT DREW</span><strong>{{ analysis.opponentCardsDrawn }}</strong></div> 
+      <div class="analysis-card"><span>FINAL HAND TOTALS</span><strong>{{ analysis.playerHandTotal }} / {{ analysis.opponentHandTotal }}</strong></div> 
+    </div>
+
+    <div class="analysis-actions"> 
+      <button (click)="goToGame()">BACK TO GAME</button> 
+      <button (click)="changeMode()">CHANGE MODE / DIFFICULTY</button> 
+    </div>
+  </div>
+</section>

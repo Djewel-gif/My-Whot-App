@@ -1,0 +1,21 @@
+<div class="whot-card">
+
+  <div class="corner top-left">
+    {{ card.number }}
+  </div>
+
+  <div class="symbol">
+    <span *ngIf="card.number !== 20">
+      {{ card.symbol }}
+    </span>
+
+    <span *ngIf="card.number === 20" style="font-size: 10px">
+      WHOT
+    </span>
+  </div>
+
+  <div class="corner bottom-right">
+    {{ card.number }}
+  </div>
+
+</div>

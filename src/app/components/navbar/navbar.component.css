@@ -1,0 +1,105 @@
+
+        .navbar {
+            height: 80px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 55px;
+
+            border-bottom: 1px solid rgba(255,255,255,.08);
+
+            background: rgba(7, 28, 23, .65);
+            backdrop-filter: blur(10px);
+        }
+
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            font-family: Georgia, serif;
+            font-size: 25px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+
+        .logo-mark {
+            width: 40px;
+            height: 40px;
+
+            display: grid;
+            place-items: center;
+
+            border: 1px solid var(--gold);
+            border-radius: 50%;
+
+            color: var(--gold-light);
+        }
+
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 35px;
+        }
+
+
+        .nav-links a {
+            color: var(--muted);
+
+            text-decoration: none;
+
+            font-size: 13px;
+            letter-spacing: 1px;
+
+            transition: .2s;
+        }
+
+
+        .nav-links a:hover {
+            color: var(--gold-light);
+        }
+
+
+        .launch-btn {
+            padding: 12px 23px;
+
+            border: 1px solid var(--gold);
+            border-radius: 999px;
+
+            background: var(--gold);
+            color: #17231d;
+
+            text-decoration: none;
+
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 1px;
+
+            transition: .2s;
+        }
+
+
+        .launch-btn:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.08);
+        }
+
+             @media (max-width: 900px) {
+
+            .navbar {
+                padding: 0 25px;
+            }
+                 .logo {
+                font-size: 20px;
+            }
+
+            .launch-btn {
+                padding: 10px 15px;
+            }
+
+        }

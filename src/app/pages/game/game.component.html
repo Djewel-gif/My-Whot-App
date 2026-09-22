@@ -1,0 +1,201 @@
+<section class="game-page">
+
+    <div class="game-content" [class.blurred]="isShuffling">
+
+        <!-- HEADER -->
+        <header class="game-header">
+
+            <a routerLink="/dashboard" class="brand">
+                <span>W</span>
+                WHOTS
+            </a>
+
+            <div class="table-title">
+                <span>
+                    TABLE 01 / {{ selectedStyle | uppercase }}
+                </span>
+
+                <strong>
+                    {{ selectedStyle === 'challenge'
+                    ? 'CUSTOM CHALLENGE'
+                    : 'WHOTS TABLE' }}
+                </strong>
+            </div>
+
+            <div class="header-actions">
+
+                <span class="streak">
+                   WIN STREAK 🔥<b>{{ streak }}</b>
+                </span>
+
+                <button (click)="reset()" class="new-game">
+                    ↻ NEW GAME
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <!-- GAME AREA -->
+        <main class="game-table">
+
+            <!-- STATUS -->
+            <div class="status-row">
+
+                <div class="status-pill" [class.quick-pill]="selectedStyle !== 'classic'">
+                    <i></i>
+
+                    {{ gameStarted ? currentTurn : 'READY TO PLAY' }}
+
+                </div>
+
+
+                <div class="deck-status">
+
+                    <span class="deck-icon">▧</span>
+
+                    <b>{{ deck.length }}</b>
+
+                    cards remaining
+
+                </div>
+
+            </div>
+
+
+            <!-- TIMER -->
+            <div class="timer-panel" *ngIf="timerEnabled">
+
+                <span>TIME LEFT</span>
+
+                <strong>
+                    {{ formatTime(timer) }}
+                </strong>
+
+                <small>
+                    {{
+                    selectedStyle === 'quick'
+                    ? 'Quick game ends when the clock hits zero'
+                    : 'Challenge timer'
+                    }}
+                </small>
+
+            </div>
+
+
+            <!-- OPPONENT -->
+            <div class="opponent-zone">
+                <div class="player-meta">
+                    <span class="avatar opponent-avatar">{{ selectedOpponent === 'computer' ? 'AI' : 'P2' }}</span>
+                    <div>
+                        <b>{{ selectedOpponent === 'computer' ? 'THE COMPUTER' : 'PLAYER TWO' }}</b>
+                        <small>
+                            {{ selectedOpponent === 'computer' ? difficultyLabel + ' difficulty' : 'Local player' }}
+                            · {{ opponentHand.length }} cards
+                        </small>
+                    </div>
+                </div>
+
+                <!-- Computer cards stay face-down; local-player cards are visible and clickable. -->
+                <div class="hand opponent-hand" [class.local-hand]="selectedOpponent === 'person'">
+                    <ng-container *ngIf="selectedOpponent === 'computer'; else localOpponentCards">
+                        <div class="back-card" *ngFor="let card of opponentHand; let i = index"
+                            [style.transform]="'rotate(' + ((i - (opponentHand.length - 1) / 2) * 4) + 'deg)'">
+                            <span>W</span>
+                        </div>
+                    </ng-container>
+                    <ng-template #localOpponentCards>
+                        <app-card *ngFor="let card of opponentHand; let i = index" [card]="card"
+                            [style.--fan-angle]="((i - (opponentHand.length - 1) / 2) * 4) + 'deg'"
+                            [class.normal-hover]="selectedDifficulty === 'standard'"
+                            [class.local-playable]="gameService.currentPlayer === 2 && isPlayable(card)"
+                            (click)="playOpponentCard(card)">
+                        </app-card>
+                    </ng-template>
+                </div>
+            </div>
+
+            <!-- Middle table area. -->
+            <div class="center-line">
+                <span></span>
+                <div class="middle-cards">
+                    <button *ngIf="!gameStarted && !isShuffling" class="shuffle-button" (click)="shuffleAndDeal()">
+                        SHUFFLE &amp; DEAL
+                    </button>
+
+                   <ng-container *ngIf="gameStarted">
+                        <button class="draw-pile" title="Draw a card" (click)="drawCard()">
+                            <b>W</b>
+                            <small>DRAW</small>
+                        </button>
+                        <app-card [card]="playingCard"></app-card>
+                    </ng-container>
+                </div>
+                <span></span>
+            </div>
+
+            <!-- Human player's hand. -->
+            <div class="player-zone">
+                <div class="player-hand">
+                    <app-card *ngFor="let card of playerHand; let i = index" [card]="card"
+                       [style.transform]="'rotate(' + ((i - (playerHand.length - 1) / 2) * 4) + 'deg)'"
+                        [class.normal-hover]="selectedDifficulty === 'standard'"
+                        [class.easy-playable]="shouldGlow(card)" (click)="playCard(card)"
+                        class="player-card">
+                    </app-card>
+                </div>
+
+                <div class="player-meta">
+                    <span class="avatar">{{ playerName.charAt(0).toUpperCase() }}</span>
+                    <div>
+                        <b>{{ playerName | uppercase }}</b>
+                        <small>Player {{ selectedPlayer }} · {{ playerHand.length }} cards</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-indicator" *ngIf="showActionMessage">
+                <span>{{ actionMessage }}</span>
+            </div>
+
+           <div class="whot-modal-backdrop" *ngIf="gameService.whotChoicePending && !gameService.gameOver">
+                <div class="whot-modal">
+                    <span class="whot-modal-label">20 / WHOT</span>
+                    <h2>{{ gameService.currentPlayer === 1 ? 'Choose a symbol' : 'Player Two: choose a symbol' }}</h2>
+                    <p>The chosen symbol becomes the next suit.</p>
+                    <div class="whot-symbols">
+                        <button *ngFor="let symbol of whotChoices"
+                            (click)="gameService.currentPlayer === 1 ? chooseWhotSymbol(symbol) : chooseOpponentWhotSymbol(symbol)">
+                            <span>{{ symbol }}</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="result-card-backdrop" *ngIf="showResult">
+          <div class="result-card">
+                <span class="result-mark">!</span>
+                <div>
+                    <b>{{ resultTitle }}</b>
+                    <small>{{ resultMessage }}</small>
+                </div>
+                <div class="result-actions">
+                     <button (click)="shuffleAndDeal()">PLAY AGAIN</button>
+                    <button (click)="goToAnalysis()">GAME ANALYSIS</button> <!-- Opens the saved round analysis. -->
+                    <button (click)="changeMode()">CHANGE MODE / DIFFICULTY</button> <!-- Returns to setup. -->
+                </div>
+            </div>
+             </div>
+
+            <div class="help-row">
+                <span>{{ selectedDifficulty === 'casual' ? 'Playable cards glow.' : 'Hover over your cards to inspect them.' }}</span>
+                <span>Tap the draw pile <b>↗</b></span>
+            </div>
+        </main>
+    </div>
+
+   <div class="shuffle-overlay" *ngIf="isShuffling">
+        <app-shuffling></app-shuffling>
+    </div>
+</section>

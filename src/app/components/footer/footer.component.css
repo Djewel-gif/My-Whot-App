@@ -1,0 +1,23 @@
+.footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    margin-top: 20px;
+    width: 100%;
+    
+}
+.links {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+}
+.links a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+}
+.footer .links {
+    margin-top: 10px;
+}

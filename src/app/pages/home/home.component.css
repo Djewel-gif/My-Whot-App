@@ -1,0 +1,125 @@
+        
+        .hero {
+            min-height: calc(100vh - 80px);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            position: relative;
+
+            padding: 40px 60px;
+        }
+
+
+        .hero-content {
+            width: 100%;
+            max-width: 850px;
+
+            text-align: center;
+
+            position: relative;
+            z-index: 5;
+        }
+
+
+        .tag {
+            margin-bottom: 18px;
+
+            color: var(--gold-light);
+
+            font-size: 12px;
+            font-weight: bold;
+
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+
+        .hero h1 {
+            font-family: Georgia, serif;
+
+            font-size: clamp(90px, 14vw, 190px);
+
+            line-height: .8;
+
+            letter-spacing: 8px;
+
+            color: var(--white);
+
+            text-shadow:
+                0 15px 40px rgba(0,0,0,.35);
+        }
+
+
+        .hero h1 span {
+            color: var(--gold);
+        }
+
+
+        .hero-text {
+            max-width: 520px;
+
+            margin: 35px auto 30px;
+
+            color: var(--muted);
+
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            gap: 15px;
+        }
+
+
+        .play-btn {
+            padding: 15px 32px;
+
+            border-radius: 999px;
+
+            background: var(--gold);
+            color: #17231d;
+
+            text-decoration: none;
+
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 1px;
+
+            box-shadow: 0 12px 30px rgba(0,0,0,.25);
+
+            transition: .2s;
+        }
+
+
+        .play-btn:hover {
+            transform: translateY(-3px);
+            filter: brightness(1.08);
+        }
+
+
+        .learn-btn {
+            padding: 15px 30px;
+
+            border: 1px solid rgba(255,255,255,.18);
+            border-radius: 999px;
+
+            color: var(--white);
+
+            text-decoration: none;
+
+            font-size: 13px;
+
+            transition: .2s;
+        }
+
+
+        .learn-btn:hover {
+            background: rgba(255,255,255,.07);
+        }

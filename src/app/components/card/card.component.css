@@ -1,0 +1,60 @@
+ .whot-card {
+            width: 70px;
+            height: 100px;
+            background-color: white;
+            border: 1px solid #d9a63a;
+            border-radius: 9px;
+            padding: 10px;
+            box-sizing: border-box;
+            color:  #19332b;
+
+            display: flex;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, .2);
+            flex-direction: column;
+            position: relative;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+        }
+
+        .corner {
+            position: absolute;
+            font-size: 18px;
+            font-weight: 700;
+            z-index: 2;
+        }
+
+        .top-left {
+            top: 5px;
+            left: 7px;
+        }
+
+        .bottom-right {
+            bottom: 5px;
+            right: 7px;
+            transform: rotate(180deg);
+        }
+
+        .symbol {
+
+            font-size: 28px;
+            align-items: center;
+            justify-self: center;
+
+        }
+:host {
+    display: block;
+}
+
+.whot-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+:host(.easy-playable) .whot-card {
+    box-shadow: 0 0 18px gold;
+}
+
+:host(.player-card:hover) {
+     z-index: 20;
+    cursor: pointer;
+}

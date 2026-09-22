@@ -2,8 +2,10 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
+    "skipLibCheck": true,
     "outDir": "./out-tsc/app",
-    "types": []
+    "types": [],
+        "lib": ["ES2020", "DOM"]
   },
   "files": [
     "src/main.ts"

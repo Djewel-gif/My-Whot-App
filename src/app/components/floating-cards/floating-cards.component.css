@@ -1,0 +1,136 @@
+
+        .floating-card {
+            position: absolute;
+
+            width: 115px;
+            height: 160px;
+
+            background: white;
+
+            border: 3px solid black;
+            border-radius: 12px;
+
+            color: rgb(150, 78, 78);
+
+            box-shadow: 0 25px 50px rgba(0,0,0,.3);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 55px;
+
+            transition: transform .4s ease;
+             position: absolute;
+    z-index: 10;
+    cursor: pointer;
+
+        }
+
+
+        .floating-card:hover {
+            transform: translateY(-15px) rotate(0deg) !important;
+        }
+
+
+        .card-number {
+            position: absolute;
+
+            font-size: 25px;
+            font-weight: 900;
+        }
+
+
+        .top-left {
+            top: 8px;
+            left: 12px;
+        }
+
+
+        .bottom-right {
+            bottom: 8px;
+            right: 12px;
+
+            transform: rotate(180deg);
+        }
+
+
+        .card-left {
+            left: 8%;
+            top: 30%;
+
+            transform: rotate(-15deg);
+        }
+
+
+        .card-right {
+            right: 8%;
+            top: 28%;
+
+            transform: rotate(15deg);
+        }
+
+
+        .card-bottom-left {
+            left: 17%;
+            bottom: 8%;
+
+            transform: rotate(8deg) scale(.8);
+        }
+
+
+        .card-bottom-right {
+            right: 17%;
+            bottom: 8%;
+
+            transform: rotate(-8deg) scale(.8);
+        }
+
+
+        /* =========================
+           DECORATIVE GLOW
+        ========================= */
+
+        .glow {
+            position: absolute;
+
+            width: 450px;
+            height: 450px;
+
+            border-radius: 50%;
+
+            background: rgba(40, 119, 91, .15);
+
+            filter: blur(60px);
+
+            pointer-events: none;
+        }
+
+
+        .glow-one {
+            top: 10%;
+            left: 15%;
+        }
+
+
+        .glow-two {
+            right: 10%;
+            bottom: 5%;
+        }
+
+        
+        @media (max-width: 900px) {
+             .floating-card {
+                opacity: .35;
+            }
+
+            .card-left {
+                left: -30px;
+            }
+
+            .card-right {
+                right: -30px;
+            }
+
+        }
+

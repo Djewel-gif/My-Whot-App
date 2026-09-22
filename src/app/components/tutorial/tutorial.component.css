@@ -1,0 +1,497 @@
+.tutorial {
+    width: 100%;
+    margin-top: 45px;
+
+    text-align: left;
+}
+
+
+.introduction {
+    margin-bottom: 45px;
+
+    padding: 28px 30px;
+
+    border-left: 3px solid var(--gold);
+
+    background: rgba(255, 255, 255, 0.04);
+
+    border-radius: 0 12px 12px 0;
+}
+
+
+.introduction .title {
+    color: var(--gold-light);
+
+    font-size: 24px;
+    font-weight: bold;
+
+    margin-bottom: 15px;
+}
+
+
+.introduction .description {
+    color: var(--muted);
+
+    font-size: 15px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   MAIN TITLE
+========================================= */
+
+.instructions > .title {
+    color: var(--white);
+
+    font-family: Georgia, serif;
+
+    font-size: 32px;
+
+    margin-bottom: 25px;
+
+    text-align: left;
+
+    padding-bottom: 12px;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+
+/* =========================================
+   RULE SECTIONS
+========================================= */
+
+.rule-section {
+    margin-bottom: 25px;
+
+    padding: 28px;
+
+    background: rgba(255, 255, 255, 0.045);
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    border-radius: 12px;
+
+    text-align: left;
+}
+
+
+.rule-section h1 {
+    margin: 0 0 15px;
+
+    color: var(--gold-light);
+
+    font-size: 22px;
+
+    font-weight: bold;
+}
+
+
+.rule-section h1::after {
+    content: "";
+
+    display: block;
+
+    width: 35px;
+    height: 2px;
+
+    background: var(--gold);
+
+    margin-top: 8px;
+}
+
+
+.rule-section h2 {
+    color: var(--white);
+
+    font-size: 17px;
+
+    margin-top: 20px;
+    margin-bottom: 8px;
+}
+
+
+.rule-section p {
+    color: var(--muted);
+
+    font-size: 15px;
+
+    line-height: 1.8;
+
+    margin-bottom: 14px;
+}
+
+
+/* =========================================
+   LISTS
+========================================= */
+
+.rule-section ul,
+.rule-section ol {
+    padding-left: 22px;
+
+    color: var(--muted);
+
+    line-height: 1.8;
+}
+
+
+.rule-section li {
+    margin-bottom: 8px;
+}
+
+
+/* =========================================
+   CARD TYPES
+========================================= */
+
+.card-list {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 12px;
+
+    margin-top: 20px;
+}
+
+
+.card-type {
+    padding: 18px;
+
+    background: rgba(255, 255, 255, 0.035);
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    border-radius: 10px;
+
+    transition: .2s ease;
+}
+
+
+.card-type:hover {
+    transform: translateY(-3px);
+
+    border-color: rgba(212, 175, 55, .5);
+
+    background: rgba(212, 175, 55, .06);
+}
+
+
+.card-type h2 {
+    margin: 0 0 8px;
+
+    color: var(--gold-light);
+
+    font-size: 16px;
+}
+
+
+.card-type p {
+    margin: 0;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================
+   GAMEPLAY STEPS
+========================================= */
+
+.instruction {
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 15px;
+
+    padding: 16px 0;
+
+    border-bottom: 1px solid rgba(255, 255, 255, .08);
+}
+
+
+.instruction:last-child {
+    border-bottom: none;
+}
+
+
+.step {
+    flex-shrink: 0;
+
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: var(--gold);
+
+    color: #17231d;
+
+    font-size: 14px;
+
+    font-weight: bold;
+}
+
+
+.instruction .text {
+    padding-top: 5px;
+
+    color: var(--muted);
+
+    font-size: 14px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   SPECIAL WHOT RULE
+========================================= */
+
+.special-rule {
+    margin-top: 20px;
+
+    padding: 22px;
+
+    background: rgba(212, 175, 55, .08);
+
+    border-left: 3px solid var(--gold);
+
+    border-radius: 0 10px 10px 0;
+}
+
+
+.special-rule h2 {
+    margin-top: 0;
+
+    color: var(--gold-light);
+}
+
+
+.special-rule p {
+    margin-bottom: 0;
+
+    color: var(--muted);
+}
+
+
+/* =========================================
+   SCORING
+========================================= */
+
+.score-list {
+    margin-top: 20px;
+
+    overflow: hidden;
+
+    border: 1px solid rgba(255, 255, 255, .08);
+
+    border-radius: 10px;
+}
+
+
+.score-item {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 20px;
+
+    padding: 16px 18px;
+
+    background: rgba(255, 255, 255, .025);
+
+    border-bottom: 1px solid rgba(255, 255, 255, .07);
+}
+
+
+.score-item:last-child {
+    border-bottom: none;
+}
+
+
+.score-item strong {
+    color: var(--white);
+
+    font-size: 14px;
+}
+
+
+.score-item span {
+    color: var(--gold-light);
+
+    font-size: 13px;
+
+    font-weight: bold;
+}
+
+
+/* =========================================
+   FAQ
+========================================= */
+
+.faq-item {
+    padding: 18px 0;
+
+    border-bottom: 1px solid rgba(255, 255, 255, .08);
+}
+
+
+.faq-item:last-child {
+    border-bottom: none;
+}
+
+
+.faq-item h2 {
+    margin: 0 0 8px;
+
+    color: var(--white);
+
+    font-size: 17px;
+}
+
+
+.faq-item p {
+    margin: 0;
+
+    color: var(--muted);
+
+    font-size: 14px;
+}
+
+
+/* =========================================
+   FINAL THOUGHTS
+========================================= */
+
+.final-thoughts {
+    background: rgba(212, 175, 55, .07);
+
+    border-color: rgba(212, 175, 55, .2);
+}
+
+
+.final-thoughts h1 {
+    color: var(--gold-light);
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+
+    .tutorial {
+        margin-top: 30px;
+    }
+
+
+    .introduction {
+        padding: 22px;
+
+        margin-bottom: 30px;
+    }
+
+
+    .introduction .title {
+        font-size: 20px;
+    }
+
+
+    .introduction .description {
+        font-size: 14px;
+    }
+
+
+    .instructions > .title {
+        font-size: 27px;
+    }
+
+
+    .rule-section {
+        padding: 22px 18px;
+    }
+
+
+    .rule-section h1 {
+        font-size: 20px;
+    }
+
+
+    .card-list {
+        grid-template-columns: 1fr;
+    }
+
+
+    .score-item {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 5px;
+    }
+
+}
+
+
+/* =========================================
+   SMALL PHONES
+========================================= */
+
+@media (max-width: 450px) {
+
+    .tutorial {
+        margin-top: 20px;
+    }
+
+
+    .introduction {
+        padding: 18px;
+    }
+
+
+    .instructions > .title {
+        font-size: 24px;
+    }
+
+
+    .rule-section {
+        padding: 18px 15px;
+    }
+
+
+    .rule-section p {
+        font-size: 14px;
+    }
+
+
+    .instruction {
+        gap: 10px;
+    }
+
+
+    .step {
+        width: 30px;
+        height: 30px;
+
+        font-size: 12px;
+    }
+
+
+    .instruction .text {
+        font-size: 13px;
+    }
+
+}
